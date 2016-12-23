@@ -1,40 +1,132 @@
 {
-  "name": "language-client-example",
-  "description": "VSCode part of a language server",
-  "author": "Microsoft Corporation",
+  "name": "snapshot-tools",
+  "description": "Helpful tools for snapshot testing",
+  "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
   "license": "MIT",
   "version": "0.0.1",
   "publisher": "vscode",
   "engines": {
-    "vscode": "^1.4.0"
+    "vscode": "^1.8.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:plaintext"
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:snapshot"
   ],
   "main": "./out/src/extension",
   "contributes": {
+    "languages": [
+      {
+        "id": "snapshot",
+        "extensions": [
+          ".snap"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "snapshot",
+        "scopeName": "source.snapshot",
+        "path": "./syntaxes/snapshot.tmLanguage"
+      }
+    ],
+    "commands": [
+      {
+        "command": "snapshotTools.navigateToDefinition",
+        "title": "Navigate to test/snapshot"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "snapshotTools.navigateToDefinition",
+        "key": "ctrl+alt+f12",
+        "mac": "cmd+alt+f12",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "snapshotTools.navigateToDefinition",
+          "group": "navigation",
+          "when": "editorLangId == javascript"
+        },
+        {
+          "command": "snapshotTools.navigateToDefinition",
+          "group": "navigation",
+          "when": "editorLangId == javascriptreact"
+        },
+        {
+          "command": "snapshotTools.navigateToDefinition",
+          "group": "navigation",
+          "when": "editorLangId == typescript"
+        },
+        {
+          "command": "snapshotTools.navigateToDefinition",
+          "group": "navigation",
+          "when": "editorLangId == typescriptreact"
+        },
+        {
+          "command": "snapshotTools.navigateToDefinition",
+          "group": "navigation",
+          "when": "editorLangId == snapshot"
+        }
+      ]
+    },
     "configuration": {
       "type": "object",
       "title": "Example configuration",
       "properties": {
-        "languageServerExample.maxNumberOfProblems": {
-          "type": "number",
-          "default": 100,
-          "description": "Controls the maximum number of problems produced by the server."
-        },
-        "languageServerExample.trace.server": {
+        "snapshotTools.snapshotRoot": {
           "type": "string",
-          "enum": [
-            "off",
-            "messages",
-            "verbose"
-          ],
-          "default": "off",
-          "description": "Traces the communication between VSCode and the languageServerExample service."
-        }        
+          "default": "./",
+          "description": "Snapshot root path directory relative to workspace root"
+        },
+        "snapshotTools.snapshotExt": {
+          "type": "string",
+          "default": ".snap",
+          "description": "Snapshot file extension"
+        },
+        "snapshotTools.snapshotDir": {
+          "type": "string",
+          "default": "./__snapshots__",
+          "description": "Snapshot directory relative to current opened test file"
+        },
+        "snapshotTools.testFileRoot": {
+          "type": "string",
+          "default": "./",
+          "description": "Test files directory relative to workspace root"
+        },
+        "snapshotTools.testFileExt": {
+          "type": "string",
+          "default": ".jsx",
+          "description": "Test file extension"
+        },
+        "snapshotTools.testFileDir": {
+          "type": "string",
+          "default": "../",
+          "description": "Test file directory relative to current opened snapshot file"
+        },
+        "snapshotTools.snapshotMethods": {
+          "type": "array",
+          "default": ["toMatchSnapshot", "snapshot", "matchSnapshot"],
+          "description": "Match snapshot call method names"
+        },
+        "snapshotTools.testMethods": {
+          "type": "array",
+          "default": ["test", "it", "fit", "xit"],
+          "description": "Test method names"
+        },
+        "snapshotTools.suiteMethods": {
+          "type": "array",
+          "default": ["suite", "describe", "context"],
+          "description": "Suite method names"
+        }
       }
     }
   },
@@ -51,6 +143,6 @@
     "vscode": "^1.0.3"
   },
   "dependencies": {
-    "vscode-languageclient": "^2.6.3"
+    "vscode-languageclient": "^3.0.1-alpha.14"
   }
 }

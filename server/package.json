@@ -1,21 +1,35 @@
 {
-  "name": "language-server-example",
-  "description": "Example implementation of a language server in node.",
+  "name": "snapshot-tools-server",
+  "description": "Snapshot Tools language server",
   "version": "0.0.1",
-  "author": "Microsoft Corporation",
+  "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
   "license": "MIT",
   "engines": {
     "node": "*"
   },
   "dependencies": {
-    "vscode-languageserver": "^2.6.2"
+    "core-decorators": "^0.15.0",
+    "typescript": "^2.1.4",
+    "vscode-languageserver": "^3.0.1-alpha.14"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/chai-subset": "^1.0.29",
+    "@types/core-decorators": "^0.10.30",
+    "@types/mocha": "^2.2.33",
     "@types/node": "^6.0.52",
-    "typescript": "^2.1.4"
+    "@types/sinon": "^1.16.33",
+    "@types/sinon-chai": "^2.7.27",
+    "chai": "^3.5.0",
+    "chai-subset": "^1.3.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "ts-node": "^1.7.2"
   },
   "scripts": {
     "compile": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc -p .",
-    "watch": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc --watch -p ."
+    "watch": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc --watch -p .",
+    "test": "mocha -r ./testIndex.js test/**"
   }
 }
