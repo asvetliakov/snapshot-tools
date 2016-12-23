@@ -3,7 +3,7 @@
   "description": "Helpful tools for snapshot testing",
   "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "asvetliakov",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
   "engines": {
     "vscode": "^1.8.0"
   },
+  "icon": "./icon.png",
   "categories": [
     "Languages",
     "Other"
