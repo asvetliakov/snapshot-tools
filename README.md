@@ -9,6 +9,8 @@
 
 Install snapshot-tools extension in VS Code
 
+Snapshot text mate language was taken from [vscode-jest extension](https://github.com/orta/vscode-jest)
+
 ### Validation
 
 ![Snapshot validation](/images/snapshot-validation.gif)
