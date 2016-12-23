@@ -3,7 +3,7 @@
   "description": "Helpful tools for snapshot testing",
   "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "asvetliakov",
   "repository": {
     "type": "git",
@@ -140,7 +140,7 @@
     "compile": "tsc -watch -p ./",
     "update-vscode": "node ./node_modules/vscode/bin/install",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "vscode:publish": "cp -r ./images client && cp README.md client/README.md && vsce publish"
+    "vscode:publish": "cp -r ../images ./images && cp ../README.md README.md && vsce publish"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.33",
