@@ -11,26 +11,26 @@ Install snapshot-tools extension in VS Code
 
 ### Validation
 
-<img src="https://github.com/asvetliakov/snapshot-tools/raw/master/images/snapshot-validation.gif alt="Snapshot validation" width="100%">
+![Snapshot validation](/images/snapshot-validation.gif)
 
 ### Display snapshot content on hover
 
-<img src="https://github.com/asvetliakov/snapshot-tools/raw/master/images/snapshot-hover.gif alt="Snapshot hover" width="100%">
+![Snapshot hover](/images/snapshot-hover.gif)
 
 ### Navigation to snapshot/test
 
-<img src="https://github.com/asvetliakov/snapshot-tools/raw/master/images/snapshot-navigation.gif alt="Snapshot navigation" width="100%">
+![Snapshot navigation](/images/snapshot-navigation.gif)
 
 You can use *Go to definition* VS code command (F12 by default) or *Navigate to test/snapshot* (Cmd/Ctrl + Alt + F12 by default)
 
 ### Show all snapshot symbols
 
-<img src="https://github.com/asvetliakov/snapshot-tools/raw/master/images/snapshot-symbols.gif alt="Snapshot symbols" width="100%">
+![Snapshot symbols](/images/snapshot-symbols.gif)
 
 
 ## Limitations
 
-Due to static analysis the language server can't determine snapshot calls if tests are being consructed dynamic. For example this won't work:
+Due to static analysis the language server can't determine snapshot calls if tests are being consructed somehow dynamic. For example this won't work:
 
 ```js
 describe("test", () => {
