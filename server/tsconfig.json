@@ -11,10 +11,7 @@
 		"suppressImplicitAnyIndexErrors": true,
 		"experimentalDecorators": true,
 		"types": [
-			"mocha",
-			"sinon",
-			"sinon-chai",
-			"chai-subset"
+			"jest"
 		]
 	},
 	"exclude": [
