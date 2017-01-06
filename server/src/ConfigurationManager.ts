@@ -71,7 +71,7 @@ export class ConfigurationManager {
      * @type {string[]}
      * @memberOf ConfigurationManager
      */
-    public snapshotMethods: string[] = ["toMatchSnapshot", "snapshot", "matchSnapshot"];
+    public snapshotMethods: string[] = ["toMatchSnapshot", "snapshot", "matchSnapshot", "toThrowErrorMatchingSnapshot"];
 
     /**
      * Test methods
@@ -79,7 +79,7 @@ export class ConfigurationManager {
      * @type {string[]}
      * @memberOf ConfigurationManager
      */
-    public testMethods: string[] = ["test", "it", "fit", "xit"];
+    public testMethods: string[] = ["test", "it", "fit", "xit", "xtest"];
     
     /**
      * Suite methods
@@ -87,7 +87,7 @@ export class ConfigurationManager {
      * @type {string[]}
      * @memberOf ConfigurationManager
      */
-    public suiteMethods: string[] = ["suite", "describe", "context"];
+    public suiteMethods: string[] = ["suite", "describe", "context", "xdescribe", "fdescribe"];
     
     /**
      * Resolve path to corresponding snapshot file from given test file

@@ -11,7 +11,7 @@ describe("desc", () => {
         expect().toMatchSnapshot();
     });
 });
-`
+`;
 
 
 describe("SnapshotChecker", () => {
