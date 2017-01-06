@@ -86,7 +86,7 @@
     },
     "configuration": {
       "type": "object",
-      "title": "Example configuration",
+      "title": "Snapshot tools configuration",
       "properties": {
         "snapshotTools.snapshotRoot": {
           "type": "string",
@@ -120,17 +120,17 @@
         },
         "snapshotTools.snapshotMethods": {
           "type": "array",
-          "default": ["toMatchSnapshot", "snapshot", "matchSnapshot"],
+          "default": ["toMatchSnapshot", "snapshot", "matchSnapshot", "toThrowErrorMatchingSnapshot"],
           "description": "Match snapshot call method names"
         },
         "snapshotTools.testMethods": {
           "type": "array",
-          "default": ["test", "it", "fit", "xit"],
+          "default": ["test", "it", "fit", "xit", "xtest"],
           "description": "Test method names"
         },
         "snapshotTools.suiteMethods": {
           "type": "array",
-          "default": ["suite", "describe", "context"],
+          "default": ["suite", "describe", "context", "xdescribe", "fdescribe"],
           "description": "Suite method names"
         }
       }
