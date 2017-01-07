@@ -1,5 +1,6 @@
 import * as path from "path";
 import * as fs from "fs";
+import Uri from "vscode-uri";
 import { autobind, debounce } from "core-decorators";
 import { IConnection, TextDocumentChangeEvent, Files, FileEvent, FileChangeType } from "vscode-languageserver";
 import { TextDocuments, TextDocument } from "vscode-languageserver";
@@ -347,6 +348,7 @@ export class DocumentManager {
      * @memberOf DocumentManager
      */
     private absolutePathToUri(path: string): string {
-        return `file://${path}`;
+        const uri = Uri.file(path);
+        return uri.toString();
     }
 }

@@ -10,7 +10,8 @@
   "dependencies": {
     "core-decorators": "^0.15.0",
     "typescript": "^2.1.4",
-    "vscode-languageserver": "^3.0.1-alpha.14"
+    "vscode-languageserver": "^3.0.1-alpha.14",
+    "vscode-uri": "^1.0.0"
   },
   "devDependencies": {
     "@types/core-decorators": "^0.10.30",
@@ -21,8 +22,8 @@
     "ts-node": "^1.7.2"
   },
   "scripts": {
-    "compile": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc -p .",
-    "watch": "installServerIntoExtension ../client ./package.json ./tsconfig.json && tsc --watch -p .",
+    "compile": "installServerIntoExtension ../client ./package.json ./tsconfig.build.json && tsc -p tsconfig.build.json",
+    "watch": "installServerIntoExtension ../client ./package.json ./tsconfig.build.json && tsc --watch -p tsconfig.build.json",
     "test": "jest"
   },
   "jest": {
