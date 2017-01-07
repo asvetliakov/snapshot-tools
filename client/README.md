@@ -65,7 +65,7 @@ Set it to ".js" if you're compiling sources before running, otherwise set to ".t
 
 ### [0.0.4]
 - Fixed windows issues
-- Fixed user configuration is not being applied properly
+- Fixed user configuration was not being applied properly
 
 ### [0.0.1 - 0.0.3]
 - Initial release
