@@ -13,21 +13,21 @@ Snapshot text mate language was taken from [vscode-jest extension](https://githu
 
 ### Validation
 
-![Snapshot validation](./images/snapshot-validation.gif)
+![Snapshot validation](/client/images/snapshot-validation.gif)
 
 ### Display snapshot content on hover
 
-![Snapshot hover](./images/snapshot-hover.gif)
+![Snapshot hover](/client/images/snapshot-hover.gif)
 
 ### Navigation to snapshot/test
 
-![Snapshot navigation](./images/snapshot-navigation.gif)
+![Snapshot navigation](/client/images/snapshot-navigation.gif)
 
 You can use *Go to definition* VS code command (F12 by default) or *Navigate to test/snapshot* (Cmd/Ctrl + Alt + F12 by default)
 
 ### Show all snapshot symbols
 
-![Snapshot symbols](./images/snapshot-symbols.gif)
+![Snapshot symbols](/client/images/snapshot-symbols.gif)
 
 
 ## Limitations
