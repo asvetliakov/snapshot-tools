@@ -262,6 +262,8 @@ export class ServerManager {
     
     @autobind
     protected onDidChangeConfiguration(param: DidChangeConfigurationParams): void {
-        this.configurationManager.setSettings(param.settings);
+        if (param.settings && param.settings.snapshotTools) {
+            this.configurationManager.setSettings(param.settings.snapshotTools);
+        }
     }
 }
