@@ -139,8 +139,8 @@ export class ServerManager {
         if (!docPath || !testDocument) {
             return null;
         }
-        const extname = path.extname(docPath);
-        if (extname !== this.configurationManager.testFileExt) {
+        const documentType = this.documentManager.getDocumentType(path.extname(docPath));
+        if (documentType !== DocumentType.TEST) {
             return null;
         }
         
@@ -176,11 +176,12 @@ export class ServerManager {
             return null;
         }
         const extname = path.extname(docPath);
-        if (extname !== this.configurationManager.testFileExt && extname !== this.configurationManager.snapshotExt) {
+        const documentType = this.documentManager.getDocumentType(path.extname(docPath));
+        if (documentType === DocumentType.NONE) {
             return null;
         }
         
-        if (extname === this.configurationManager.testFileExt) {
+        if (documentType === DocumentType.TEST) {
             const snapshotSource = this.documentManager.getLinkedSnapshot(param.textDocument.uri);
             if (!snapshotSource) {
                 return null;

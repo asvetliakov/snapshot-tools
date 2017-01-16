@@ -19,8 +19,11 @@ export function activate(context: ExtensionContext) {
 	}
 	
 	const configuration = workspace.getConfiguration("snapshotTools");
-	const testFileExt = configuration.get("testFileExt");
 	const snapshotFileExt = configuration.get("snapshotExt");
+	let testFileExt = configuration.get("testFileExt");
+	if (typeof testFileExt === "string") {
+		testFileExt = [testFileExt];
+	}
 	
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
@@ -31,8 +34,8 @@ export function activate(context: ExtensionContext) {
 			configurationSection: "snapshotTools",
 			// Notify the server about file changes to '.clientrc files contain in the workspace
 			fileEvents: [
-				workspace.createFileSystemWatcher(`**/*${testFileExt}`),
-				workspace.createFileSystemWatcher(`**/*${snapshotFileExt}`)
+				workspace.createFileSystemWatcher(`**/*${snapshotFileExt}`),
+				...(testFileExt as string[]).map(val => workspace.createFileSystemWatcher(`**/*${val}`))
 			]
 		}
 	}

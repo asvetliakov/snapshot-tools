@@ -23,7 +23,7 @@ export class ConfigurationManager {
      * @type {string}
      * @memberOf ConfigurationManager
      */
-    public snapshotRoot: string = "./"
+    public snapshotRoot: string = "./";
     
     /**
      * Snapshot files extension
@@ -39,15 +39,15 @@ export class ConfigurationManager {
      * @type {string}
      * @memberOf ConfigurationManager
      */
-    public testFileRoot: string = "./"
+    public testFileRoot: string = "./";
     
     /**
      * Test files extensions
      * 
-     * @type {string}
+     * @type {string[]}
      * @memberOf ConfigurationManager
      */
-    public testFileExt: string = ".jsx";
+    public testFileExt: string[] = [".tsx", ".ts", ".jsx", ".js"];
     
     /**
      * Snapshot directory (relative to opened test or absolute)
@@ -151,7 +151,11 @@ export class ConfigurationManager {
             this.testFileDir = settings.testFileDir;
         }
         if (settings.testFileExt) {
-            this.testFileExt = settings.testFileExt;
+            if (Array.isArray(settings.testFileExt)) {
+                this.testFileExt = [...settings.testFileExt];
+            } else {
+                this.testFileExt = [settings.testFileExt];
+            }
         }
         if (settings.testFileRoot) {
             this.testFileRoot = settings.testFileRoot;

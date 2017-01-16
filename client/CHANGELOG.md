@@ -1,3 +1,7 @@
+### [0.0.6]
+- snapshotTools.testFileExt can be array of extensions now
+- No initial configuration needed
+
 ### [0.0.4]
 - Fixed windows issues
 - Fixed user configuration was not being applied properly

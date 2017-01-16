@@ -15,10 +15,11 @@ import { LinkedDocumentsMap } from "./LinkedDocumentsMap";
  */
 export enum DocumentType {
     SNAPSHOT = 0,
-    TEST
+    TEST,
+    NONE
 }
 
-export type DocumentNeedValidation = (openedDocument: TextDocument, documentType: DocumentType) => void;
+export type DocumentNeedValidation = (openedDocument: TextDocument, documentType: DocumentType.SNAPSHOT | DocumentType.TEST) => void;
 
 /**
  * Manages opened text documents and establishes links to corresponding snapshot/test file
@@ -233,6 +234,24 @@ export class DocumentManager {
             return this.loadUriFromFile(uri);
         }
     }
+    
+    /**
+     * Return document type for given extension. If extension is not snapshot extension or any of test file extension, then return DocumentType.NONE
+     * 
+     * @param {string} extension
+     * @returns {boolean}
+     * 
+     * @memberOf DocumentManager
+     */
+    public getDocumentType(extension: string): DocumentType {
+        if (extension === this.configurationManager.snapshotExt) {
+            return DocumentType.SNAPSHOT;
+        } else if (this.configurationManager.testFileExt.includes(extension)) {
+            return DocumentType.TEST;
+        }
+        return DocumentType.NONE;
+    }
+
     /**
      * Cleanup given URI from manager and revalidate linked test/snapshot
      * 
@@ -273,15 +292,16 @@ export class DocumentManager {
             // request validation for current uri if we have opened document with such uri
             const uriPath = Files.uriToFilePath(currentUri);
             if (uriPath) {
+                const currentType = this.getDocumentType(path.extname(uriPath));
                 const currentUriExt = path.extname(uriPath);
-                if (currentUriExt === this.configurationManager.snapshotExt || currentUriExt === this.configurationManager.testFileExt) {
+                if (currentType !== DocumentType.NONE) {
                     if (this.openedDocumentsManager.get(currentUri)) {
                         const currentUriType = currentUriExt === this.configurationManager.snapshotExt ? DocumentType.SNAPSHOT : DocumentType.TEST;
                         this.documentNeedValidationCallback(this.openedDocumentsManager.get(currentUri), currentUriType);
                     }
                     // revalidate linked URI if it we have document opened
                     const [linkedFilePath, linkedType] = this.getLinkedFilePathByUri(currentUri);
-                    if (linkedFilePath) {
+                    if (linkedFilePath && linkedType !== DocumentType.NONE) {
                         const linkedFileUri = this.absolutePathToUri(linkedFilePath);
                         if (this.openedDocumentsManager.get(linkedFileUri)) {
                             this.documentNeedValidationCallback(this.openedDocumentsManager.get(linkedFileUri), linkedType);
@@ -328,14 +348,14 @@ export class DocumentManager {
     private getLinkedFilePathByUri(uri: string): [string | undefined, DocumentType] {
         const uriPath = Files.uriToFilePath(uri);
         if (uriPath) {
-            const extName = path.extname(uriPath);
-            if (extName === this.configurationManager.snapshotExt) {
+            const currentUriType = this.getDocumentType(path.extname(uriPath));
+            if (currentUriType === DocumentType.SNAPSHOT) {
                 return [this.configurationManager.resolveTestFilePath(uri), DocumentType.TEST];
-            } else if (extName === this.configurationManager.testFileExt) {
+            } else if (currentUriType === DocumentType.TEST) {
                 return [this.configurationManager.resolveSnapshotFilePath(uri), DocumentType.SNAPSHOT];
             }
         }
-        return [undefined, DocumentType.SNAPSHOT];
+        return [undefined, DocumentType.NONE];
     }
     
     /**

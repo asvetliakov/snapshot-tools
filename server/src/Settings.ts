@@ -7,7 +7,7 @@ export interface Settings {
     snapshotRoot?: string;
     
     /**
-     * Snapshot files extension
+     * Snapshot file extension
      * 
      * @type {string}
      */
@@ -23,9 +23,9 @@ export interface Settings {
     /**
      * Test files extensions
      * 
-     * @type {string}
+     * @type {string|string[]}
      */
-    testFileExt?: string;
+    testFileExt?: string | string[];
     
     /**
      * Snapshot directory (relative to opened test or absolute)

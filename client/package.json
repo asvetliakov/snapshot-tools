@@ -3,7 +3,7 @@
   "description": "Helpful tools for snapshot testing",
   "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
   "license": "MIT",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "asvetliakov",
   "repository": {
     "type": "git",
@@ -109,9 +109,9 @@
           "description": "Test files directory relative to workspace root"
         },
         "snapshotTools.testFileExt": {
-          "type": "string",
-          "default": ".jsx",
-          "description": "Test file extension"
+          "type": ["string", "array"],
+          "default": [".tsx", ".ts", ".jsx", ".js"],
+          "description": "Test file extensions"
         },
         "snapshotTools.testFileDir": {
           "type": "string",

@@ -58,14 +58,20 @@ describe("test", () => {
 
 ## Configuration
 
-You must set *snapshotTools.testFileExt* to your test files extension if they are different than ".jsx". 
-Set it to ".js" if you're compiling sources before running, otherwise set to ".tsx" or leave it as ".jsx" if using typescript in-memory transpilation or babel require hook
+You must set *snapshotTools.testFileExt* to your test files extension if they are different than ".jsx", ".js", ".tsx", ".ts". 
 
 ## Changelog
 
+### [0.0.6]
+
+- snapshotTools.testFileExt can be array of extensions now
+- No initial configuration needed
+
 ### [0.0.4]
+
 - Fixed windows issues
 - Fixed user configuration was not being applied properly
 
 ### [0.0.1 - 0.0.3]
+
 - Initial release
