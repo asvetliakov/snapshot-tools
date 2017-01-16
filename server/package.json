@@ -1,7 +1,7 @@
 {
   "name": "snapshot-tools-server",
   "description": "Snapshot Tools language server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Alexey Svetliakov <asvetliakov@teledini.com>",
   "license": "MIT",
   "engines": {
