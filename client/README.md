@@ -1,4 +1,8 @@
 # snapshot-tools
+
+### Also check the language service plugin which does almost same, but better and faster: https://github.com/asvetliakov/typescript-snapshots-plugin
+Once VSCode will support proper TS plugin bundling, the extension will use it instead
+
 ## Features
 * Test file/snapshot file validation (displays warning when snapshot is redunant/snapshot hasn't been created)
 * Display snapshot content on hover
@@ -58,20 +62,20 @@ describe("test", () => {
 
 ## Configuration
 
-You must set *snapshotTools.testFileExt* to your test files extension if they are different than ".jsx", ".js", ".tsx", ".ts". 
+You must set *snapshotTools.testFileExt* to your test files extension if they are different than ".jsx", ".js", ".tsx", ".ts".
 
 ## Changelog
 
-### [0.0.6]
+### [0.0.7]
+- Add link to TS LS service plugin
 
+### [0.0.6]
 - snapshotTools.testFileExt can be array of extensions now
 - No initial configuration needed
 
 ### [0.0.4]
-
 - Fixed windows issues
 - Fixed user configuration was not being applied properly
 
 ### [0.0.1 - 0.0.3]
-
 - Initial release

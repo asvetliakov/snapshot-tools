@@ -1,3 +1,6 @@
+### [0.0.7]
+- Add link to TS LS service plugin
+
 ### [0.0.6]
 - snapshotTools.testFileExt can be array of extensions now
 - No initial configuration needed
